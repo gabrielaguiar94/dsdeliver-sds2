@@ -21,8 +21,9 @@ function Orders() {
     useEffect(() => {
         fetchProducts()
             .then(response => setProducts(response.data))
-            .catch(error => console.log(error));
-
+            .catch(() => {
+                toast.warning('Erro ao listar produtos');
+            })
     }, []);
 
     const handleSelectProduct = (product: Product) => {
